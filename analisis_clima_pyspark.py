@@ -89,8 +89,7 @@ def procesamiento_1_temperatura_mensual(df):
     """
     imprimir_banner("PROCESAMIENTO 1: TEMPERATURA MENSUAL")
     
-    print("\n>>> Comando PySpark :")
-    print("temp_mensual = df.groupBy('STATION', 'YEAR', 'MONTH') \\")
+    print("\n>>> temp_mensual = df.groupBy('STATION', 'YEAR', 'MONTH') \\")
     print("    .agg(")
     print("        avg('TEMP').alias('temp_promedio'),")
     print("        max('TEMP').alias('temp_maxima'),")
@@ -155,8 +154,7 @@ def procesamiento_2_precipitacion_anual(df):
     """
     imprimir_banner("PROCESAMIENTO 2: PRECIPITACIÓN ANUAL")
     
-    print("\n>>> Comando PySpark :")
-    print("precip_anual = df.groupBy('YEAR') \\")
+    print("\n>>> precip_anual = df.groupBy('YEAR') \\")
     print("    .agg(")
     print("        sum('PRCP').alias('precip_total'),")
     print("        avg('PRCP').alias('precip_promedio'),")
@@ -220,8 +218,7 @@ def procesamiento_3_extremos_climaticos(df):
     """
     imprimir_banner("PROCESAMIENTO 3: EXTREMOS CLIMÁTICOS")
     
-    print("\n>>> Comando PySpark :")
-    print("extremos = df.groupBy('STATION') \\")
+    print("\n>>> extremos = df.groupBy('STATION') \\")
     print("    .agg(")
     print("        max('TEMP').alias('temp_record_max'),")
     print("        min('TEMP').alias('temp_record_min'),")
@@ -286,8 +283,7 @@ def procesamiento_4_analisis_estacional(df):
     """
     imprimir_banner("PROCESAMIENTO 4: ANÁLISIS ESTACIONAL")
     
-    print("\n>>> Comando PySpark :")
-    print("df_season = df.withColumn('SEASON',")
+    print("\n>>> df_season = df.withColumn('SEASON',")
     print("    when((col('MONTH') >= 3) & (col('MONTH') <= 5), 'Primavera')")
     print("    .when((col('MONTH') >= 6) & (col('MONTH') <= 8), 'Verano')")
     print("    .when((col('MONTH') >= 9) & (col('MONTH') <= 11), 'Otoño')")
@@ -386,8 +382,7 @@ def procesamiento_5_tendencia_correlacion(df):
     """
     imprimir_banner("PROCESAMIENTO 5: TENDENCIAS Y CORRELACIÓN")
     
-    print("\n>>> Comando PySpark :")
-    print("tendencia = df.groupBy('YEAR') \\")
+    print("\n>>> tendencia = df.groupBy('YEAR') \\")
     print("    .agg(")
     print("        avg('TEMP').alias('temp_anual'),")
     print("        avg('PRCP').alias('precip_anual'),")
@@ -408,8 +403,7 @@ def procesamiento_5_tendencia_correlacion(df):
     print("\nTendencia anual:")
     tendencia.show()
     
-    print("\n>>> Comando PySpark :")
-    print("correlacion = df.stat.corr('TEMP', 'PRCP')")
+    print("\n>>> correlacion = df.stat.corr('TEMP', 'PRCP')")
     
     # Calcular correlación con PySpark
     correlacion = df.stat.corr("TEMP", "PRCP")
